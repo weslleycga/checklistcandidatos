@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist de Candidatos</title>
+<link rel="stylesheet" href="./main.css">
+</head>
+<body>
+
+<h1>Checklist de Candidatos</h1>
+
+<form id="checklistForm">
+    <label>Nome do Candidato:
+        <input type="text" id="nome" required>
+    </label>
+    <label>Cargo:
+        <input type="text" id="cargo" required>
+    </label>
+
+    <h3>Itens Obrigatórios:</h3>
+    <label><input type="checkbox" class="item"> Contrato</label>
+    <label><input type="checkbox" class="item"> ficha Funcional</label>
+    <label><input type="checkbox" class="item"> CPF</label>
+    <label><input type="checkbox" class="item"> Identidade</label>
+    <label><input type="checkbox" class="item"> Certificado Ens Fundamental, Certificado de Formação e Comprovante de experiencia profissional</label>
+    <label><input type="checkbox" class="item"> Titulo de Eleitor/certidao</label>
+    <label><input type="checkbox" class="item"> Carteira reservista(homens ate 45anos)</label>
+    <label><input type="checkbox" class="item"> Laudo medico</label>
+    <label><input type="checkbox" class="item"> Comprovante de Residência</label>
+    <label><input type="checkbox" class="item"> pis/pasep</label>
+    <label><input type="checkbox" class="item"> Dados bancários</label>
+    <hr>
+    <h3>Certidões:</h3>
+    <label><input type="checkbox" class="item"> 1-Certidão Judicial Criminal Negativa - 1 e 2 grau,emitida pelo Tribunal Regional federal da 1 região</label>
+    <label><input type="checkbox" class="item"> 2- Certidão Judicial Para fins Eleitorais - 1 e 2 grau,emitida pelo Tribunal Regional federal da 1 região</label>
+    <label><input type="checkbox" class="item"> 3- Certidão Negativa de Contas Julgadas irregulares, emeitida pelo Tribunal de contas da União</label>
+    <label><input type="checkbox" class="item">4- Certidão Negativa de Contas Julgadas irregulares para fins eleitorais, emeitida pelo Tribunal de contas da União</label>
+    <label><input type="checkbox" class="item">5- Certidão Negativa de Contas Julgadas irregulares, emeitida pelo Tribunal de contas do Estado do maranhão</label>
+    <label><input type="checkbox" class="item">6- Certidao Estadual- 1 grau - improbabilidade administrativa,emitida pleo tribunal de justiça do estado do maranhão</label>
+    <label><input type="checkbox" class="item">7- Certidao Estadual- 2 grau - improbabilidade administrativa,emitida pleo tribunal de justiça do estado do maranhão</label>
+    <label><input type="checkbox" class="item">8- Certidão Estadual- Primeiro Grau - açoes penais, emitida pelo tribunal de justiça do Estado do maranhão</label>
+    <label><input type="checkbox" class="item">9- Certidão Estadual estadual de Distrbuição no segundo grau - açoes penais, emitida pelo tribunal de justiça do Estado do maranhão</label>
+    <label><input type="checkbox" class="item">10- Certidão de  Antecedentes Criminais, emitida pela Pericia Oficial do Maranhão</label>
+    <label><input type="checkbox" class="item">11- Certidão de  Antecedentes Criminais, emitida pela Policia Federal</label>
+    <hr>
+    <h3>Declarações</h3>
+    <label><input type="checkbox" class="item"> Não acumulo de Cargo</label>
+    <label><input type="checkbox" class="item"> Não ter sofrido penalidade</label>
+    <label><input type="checkbox" class="item"> Bens ou Não possuir bens</label>
+    <label><input type="checkbox" class="item"> Acesso aos dados do imposto de Renda</label>
+    <label><input type="checkbox" class="item"> Negro ou Pardo</label>
+    <label><input type="checkbox" class="item"> Carta de aceite pelo cacique(caso indigena)</label>
+    <label><input type="checkbox" class="item"> Carta de Apresentação</label>
+    <button type="submit">Adicionar</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Candidato</th>
+            <th>Cargo</th>
+            <th>Situação</th>
+        </tr>
+    </thead>
+    <tbody id="tabelaCandidatos"></tbody>
+</table>
+
+<script src="./main.js"></script>
+
+</body>
+</html>
