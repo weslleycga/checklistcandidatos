@@ -1,32 +1,50 @@
-document.getElementById("checklistForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const nome = document.getElementById("nome").value;
-    const cargo = document.getElementById("cargo").value;
-    const itens = document.querySelectorAll(".item");
-    
-    let todosSelecionados = true;
-    itens.forEach(item => {
-        if (!item.checked) {
-            todosSelecionados = false;
-        }
-        item.checked = false; // resetar para próximo cadastro
-    });
-
-    const situacao = todosSelecionados ? "Aprovado" : "Reprovado";
-    const classeSituacao = todosSelecionados ? "aprovado" : "reprovado";
-
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("checklistForm");
     const tabela = document.getElementById("tabelaCandidatos");
-    const novaLinha = tabela.insertRow();
 
-    const celulaNome = novaLinha.insertCell(0);
-    const celulaCargo = novaLinha.insertCell(1);
-    const celulaSituacao = novaLinha.insertCell(2);
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-    celulaNome.textContent = nome;
-    celulaCargo.textContent = cargo;
-    celulaSituacao.textContent = situacao;
-    celulaSituacao.classList.add(classeSituacao);
+        const nome = document.getElementById("nome").value.trim();
+        const cargo = document.getElementById("cargo").value.trim();
 
-    document.getElementById("checklistForm").reset();
+        if (!nome || !cargo) {
+            alert("Preencha os campos obrigatórios!");
+            return;
+        }
+
+        // Verificar itens obrigatórios
+        const itens = document.querySelectorAll(".item");
+        let itensNaoSelecionados = [];
+
+        itens.forEach(item => {
+            if (!item.checked) {
+                itensNaoSelecionados.push(item.parentElement.textContent.trim());
+            }
+        });
+
+        // Se não houver itens não selecionados => aprovado
+        let situacao, classeSituacao;
+        if (itensNaoSelecionados.length === 0) {
+            situacao = "Aprovado";
+            classeSituacao = "aprovado";
+        } else {
+            situacao = itensNaoSelecionados.join(", "); // junta todos os itens não selecionados
+            classeSituacao = "reprovado";
+        }
+
+        // Criar nova linha na tabela
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${nome}</td>
+            <td>${cargo}</td>
+            <td class="${classeSituacao}">${situacao}</td>
+        `;
+
+        tabela.appendChild(tr);
+
+        // Resetar formulário
+        form.reset();
+    });
 });
