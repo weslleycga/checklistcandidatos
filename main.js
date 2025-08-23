@@ -8,8 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const nome = document.getElementById("nome").value.trim();
         const cargo = document.getElementById("cargo").value.trim();
+        const etnia = document.getElementById("etnia").value;
 
-        if (!nome || !cargo) {
+        if (!nome || !cargo || !etnia) {
             alert("Preencha os campos obrigatórios!");
             return;
         }
@@ -24,7 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Se não houver itens não selecionados => aprovado
+        // Adicionar Carta de Aceite se for indígena e não estiver marcada
+        const cartaCacique = document.getElementById("cartaCacique");
+        if (etnia === "indigena" && !cartaCacique.checked) {
+            itensNaoSelecionados.push(cartaCacique.parentElement.textContent.trim());
+        }
+
+        // Determinar situação
         let situacao, classeSituacao;
         if (itensNaoSelecionados.length === 0) {
             situacao = "Aprovado";
